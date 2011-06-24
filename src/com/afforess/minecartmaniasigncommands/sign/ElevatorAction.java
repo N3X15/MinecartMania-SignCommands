@@ -27,11 +27,11 @@ public class ElevatorAction implements SignAction{
 		if (minecart.getDirection() == CompassDirection.NORTH) {
 			facingX = -1;
 		}
-		else if (minecart.getDirection() == CompassDirection.SOUTH) {
-			facingX = 1;
-		}
 		else if (minecart.getDirection() == CompassDirection.EAST) {
 			facingZ = -1;
+		}
+		else if (minecart.getDirection() == CompassDirection.SOUTH) {
+			facingX = 1;
 		}
 		else if (minecart.getDirection() == CompassDirection.WEST) {
 			facingZ = 1;
@@ -52,27 +52,29 @@ public class ElevatorAction implements SignAction{
 						if (MinecartUtils.isTrack(nextFloor)) {
 							return nextFloor;
 						}
-						nextFloor.setX(nextFloor.getX() - facingX + 1);
-						nextFloor.setX(nextFloor.getZ() - facingZ);
+						nextFloor.setX(nextFloor.getX() - facingX - 1);
+						nextFloor.setZ(nextFloor.getZ() - facingZ);
 						double speed = minecart.getPreviousMotion().length();
-						if (MinecartUtils.isTrack(nextFloor)) {
-							minecart.setMotion(CompassDirection.SOUTH, speed);
-							return nextFloor;
-						}
-						nextFloor.setX(nextFloor.getX() - 2);
 						if (MinecartUtils.isTrack(nextFloor)) {
 							minecart.setMotion(CompassDirection.NORTH, speed);
 							return nextFloor;
 						}
 						nextFloor.setX(nextFloor.getX() + 1);
+						nextFloor.setZ(nextFloor.getZ() - 1);
+						if (MinecartUtils.isTrack(nextFloor)) {
+							minecart.setMotion(CompassDirection.EAST, speed);
+							return nextFloor;
+						}
+						nextFloor.setX(nextFloor.getX() + 1);
+						nextFloor.setZ(nextFloor.getZ() + 1);
+						if (MinecartUtils.isTrack(nextFloor)) {
+							minecart.setMotion(CompassDirection.SOUTH, speed);
+							return nextFloor;
+						}
+						nextFloor.setX(nextFloor.getX() - 1);
 						nextFloor.setZ(nextFloor.getZ() + 1);
 						if (MinecartUtils.isTrack(nextFloor)) {
 							minecart.setMotion(CompassDirection.WEST, speed);
-							return nextFloor;
-						}
-						nextFloor.setZ(nextFloor.getZ() - 2);
-						if (MinecartUtils.isTrack(nextFloor)) {
-							minecart.setMotion(CompassDirection.EAST, speed);
 							return nextFloor;
 						}
 					}
