@@ -55,19 +55,23 @@ public class ElevatorAction implements SignAction{
 						nextFloor.setX(nextFloor.getX() - facingX + 1);
 						nextFloor.setX(nextFloor.getZ() - facingZ);
 						if (MinecartUtils.isTrack(nextFloor)) {
+							minecart.setMotion(CompassDirection.SOUTH, speed);
 							return nextFloor;
 						}
 						nextFloor.setX(nextFloor.getX() - 2);
 						if (MinecartUtils.isTrack(nextFloor)) {
+							minecart.setMotion(CompassDirection.NORTH, speed);
 							return nextFloor;
 						}
 						nextFloor.setX(nextFloor.getX() + 1);
 						nextFloor.setZ(nextFloor.getZ() + 1);
 						if (MinecartUtils.isTrack(nextFloor)) {
+							minecart.setMotion(CompassDirection.WEST, speed);
 							return nextFloor;
 						}
 						nextFloor.setZ(nextFloor.getZ() - 2);
 						if (MinecartUtils.isTrack(nextFloor)) {
+							minecart.setMotion(CompassDirection.EAST, speed);
 							return nextFloor;
 						}
 					}
