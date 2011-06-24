@@ -52,7 +52,8 @@ public class ElevatorAction implements SignAction{
 						if (MinecartUtils.isTrack(nextFloor)) {
 							return nextFloor;
 						}
-						nextFloor.setX(nextFloor.getX() + 1);
+						nextFloor.setX(nextFloor.getX() - facingX + 1);
+						nextFloor.setX(nextFloor.getZ() - facingZ);
 						if (MinecartUtils.isTrack(nextFloor)) {
 							return nextFloor;
 						}
