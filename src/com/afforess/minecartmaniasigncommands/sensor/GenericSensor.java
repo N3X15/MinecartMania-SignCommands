@@ -63,6 +63,11 @@ public abstract class GenericSensor implements Sensor {
 			if (isMaster()) {
 				ArrayList<GenericSensor> slaves = getSlaves();
 				for (GenericSensor sensor : slaves) {
+					if (sensor.master) {
+						MinecartManiaLogger.getInstance().severe("Duplicate Master sensors found! Attempting to correct...");
+						sensor.master = false; //should not happen
+						sensor.clearCache();
+					}	
 					sensor.setState(state, true);
 				}
 			}
@@ -226,8 +231,14 @@ public abstract class GenericSensor implements Sensor {
 					if (e.getValue().getName().equals(getName()) && e.getValue().getType() == getType()) {
 						pairedSensors.add((GenericSensor) e.getValue());
 						if (((GenericSensor)e.getValue()).isMaster()) {
-							masterFound = true;
-							masterSensor = (GenericSensor)e.getValue();
+							if (!masterFound) {
+								masterFound = true;
+								masterSensor = (GenericSensor)e.getValue();
+							}
+							else {
+								MinecartManiaLogger.getInstance().severe("Duplicate Master sensors found! Attempting to correct...");
+								((GenericSensor)e.getValue()).master = false;
+							}
 						}
 					}
 				}
