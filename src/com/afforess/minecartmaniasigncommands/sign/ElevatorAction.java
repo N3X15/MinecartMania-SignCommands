@@ -54,6 +54,7 @@ public class ElevatorAction implements SignAction{
 						}
 						nextFloor.setX(nextFloor.getX() - facingX + 1);
 						nextFloor.setX(nextFloor.getZ() - facingZ);
+						double speed = minecart.getPreviousMotion().length();
 						if (MinecartUtils.isTrack(nextFloor)) {
 							minecart.setMotion(CompassDirection.SOUTH, speed);
 							return nextFloor;
