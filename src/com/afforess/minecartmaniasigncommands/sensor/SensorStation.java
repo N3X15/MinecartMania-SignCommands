@@ -13,7 +13,6 @@ public class SensorStation extends GenericSensor {
 		super(type, sign, name);
 		this.sign = sign;
 	}
-	@Override
 	public void input(MinecartManiaMinecart minecart) {
 		
 		if (minecart != null) {

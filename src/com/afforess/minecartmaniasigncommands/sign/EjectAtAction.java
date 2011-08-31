@@ -22,7 +22,6 @@ public class EjectAtAction implements SignAction, FailureReason {
 		world = sign.getLocation().getWorld();
 	}
 	
-	@Override
 	public boolean execute(MinecartManiaMinecart minecart) {
 		if (minecart.minecart.getPassenger() == null) {
 			return false;
@@ -42,12 +41,10 @@ public class EjectAtAction implements SignAction, FailureReason {
 		return false;
 	}
 	
-	@Override
 	public boolean async() {
 		return false;
 	}
 	
-	@Override
 	public boolean valid(Sign sign) {
 		for (int i = 0; i < sign.getNumLines() - 1; i++) {
 			if (sign.getLine(i).toLowerCase().contains("eject at")) {
@@ -89,17 +86,14 @@ public class EjectAtAction implements SignAction, FailureReason {
 		return false;
 	}
 	
-	@Override
 	public String getName() {
 		return "ejectatsign";
 	}
 	
-	@Override
 	public String getFriendlyName() {
 		return "Eject At Sign";
 	}
 	
-	@Override
 	public String getReason() {
 		if (invalidCoords) {
 			return "Invalid Coordinates. Coordinate should be separated by ':'. \n(e.g \"44:55:-56\")";

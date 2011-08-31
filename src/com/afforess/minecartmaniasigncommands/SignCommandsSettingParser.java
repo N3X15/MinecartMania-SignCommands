@@ -44,7 +44,6 @@ public class SignCommandsSettingParser implements SettingParser{
 		}
 	}
 
-	@Override
 	public boolean read(Document document) {
 		//Set the default configuration before we try to read anything.
 		setDefaultConfiguration();
@@ -114,7 +113,6 @@ public class SignCommandsSettingParser implements SettingParser{
 		}
 	}
 
-	@Override
 	public boolean write(File configuration, Document document) {
 		try {
 			if (document == null) {

@@ -16,7 +16,6 @@ public class EjectionAction implements SignAction{
 		this.sign = sign.getLocation();
 	}
 
-	@Override
 	public boolean execute(MinecartManiaMinecart minecart) {
 		if (minecart.minecart.getPassenger() == null) {
 			return false;
@@ -35,12 +34,10 @@ public class EjectionAction implements SignAction{
 		return false;
 	}
 
-	@Override
 	public boolean async() {
 		return false;
 	}
 
-	@Override
 	public boolean valid(Sign sign) {
 		for (String line : sign.getLines()) {
 			if (line.toLowerCase().contains("eject here")) {
@@ -51,12 +48,10 @@ public class EjectionAction implements SignAction{
 		return false;
 	}
 
-	@Override
 	public String getName() {
 		return "ejectionsign";
 	}
 
-	@Override
 	public String getFriendlyName() {
 		return "Ejection Sign";
 	}

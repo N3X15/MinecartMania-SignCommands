@@ -84,7 +84,7 @@ public class ElevatorAction implements SignAction{
 		return null;
 	}
 
-	@Override
+	
 	public boolean execute(MinecartManiaMinecart minecart) {
 		Block ahead = minecart.getBlockTypeAhead();
 		if (ahead != null && ahead.getState() instanceof org.bukkit.block.Sign) {
@@ -97,12 +97,12 @@ public class ElevatorAction implements SignAction{
 		return false;
 	}
 
-	@Override
+	
 	public boolean async() {
 		return false;
 	}
 
-	@Override
+	
 	public boolean valid(Sign sign) {
 		for (String line : sign.getLines()) {
 			if (line.toLowerCase().contains("elevator") ||
@@ -114,12 +114,12 @@ public class ElevatorAction implements SignAction{
 		return false;
 	}
 
-	@Override
+	
 	public String getName() {
 		return "elevatorsign";
 	}
 
-	@Override
+	
 	public String getFriendlyName() {
 		return "Elevator Sign";
 	}

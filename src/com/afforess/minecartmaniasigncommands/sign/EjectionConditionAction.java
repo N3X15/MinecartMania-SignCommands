@@ -13,19 +13,16 @@ public class EjectionConditionAction implements SignAction {
 		this.sign = sign;
 	}
 
-	@Override
 	public boolean execute(MinecartManiaMinecart minecart) {
 		MinecartMeetsConditionEvent mmce = new MinecartMeetsConditionEvent(minecart, this.sign);
 		Bukkit.getServer().getPluginManager().callEvent(mmce);
 		return mmce.isMeetCondition();
 	}
 
-	@Override
 	public boolean async() {
 		return false;
 	}
 
-	@Override
 	public boolean valid(Sign sign) {
 		if (sign.getLine(0).toLowerCase().contains("ejection")) {
 			sign.addBrackets();
@@ -34,12 +31,10 @@ public class EjectionConditionAction implements SignAction {
 		return false;
 	}
 
-	@Override
 	public String getName() {
 		return "ejectionconditionsign";
 	}
 
-	@Override
 	public String getFriendlyName() {
 		return "Ejection Condition Sign";
 	}

@@ -37,7 +37,7 @@ public class HoldingForAction implements SignAction{
 		}
 	}
 
-	@Override
+	
 	public boolean execute(MinecartManiaMinecart minecart) {
 		if (minecart.getDataValue("HoldForDelay") != null) {
 			return false;
@@ -66,22 +66,22 @@ public class HoldingForAction implements SignAction{
 		return false;
 	}
 
-	@Override
+	
 	public boolean async() {
 		return true;
 	}
 
-	@Override
+	
 	public boolean valid(Sign sign) {
 		return time != -1;
 	}
 
-	@Override
+	
 	public String getName() {
 		return "holdingsign";
 	}
 
-	@Override
+	
 	public String getFriendlyName() {
 		return "Holding Sign";
 	}

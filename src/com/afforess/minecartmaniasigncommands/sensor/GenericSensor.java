@@ -120,7 +120,7 @@ public abstract class GenericSensor implements Sensor {
 		if (hasSign()) {
 			Sign sign = getSign();
 			BlockFace back = DirectionUtils.CompassDirectionToBlockFace(DirectionUtils.getOppositeDirection(DirectionUtils.getSignFacingDirection(sign)));
-			Block diode = sign.getBlock().getFace(back);
+			Block diode = sign.getBlock().getRelative(back);
 			if (diode.getTypeId() == Item.DIODE_BLOCK_OFF.getId() || diode.getTypeId() == Item.DIODE_BLOCK_ON.getId()) {
 				return diode;
 			}
@@ -145,17 +145,17 @@ public abstract class GenericSensor implements Sensor {
 		return new ArrayList<GenericSensor>();
 	}
 	
-	@Override
+	
 	public String getName() {
 		return name;
 	}
 
-	@Override
+	
 	public boolean output() {
 		return state;
 	}
 
-	@Override
+	
 	public Sign getSign() {
 		return (Sign)getLocation().getBlock().getState();
 	}
@@ -164,17 +164,17 @@ public abstract class GenericSensor implements Sensor {
 		return getLocation().getBlock().getState() instanceof Sign;
 	}
 	
-	@Override
+	
 	public Location getLocation() {
 		return this.sign;
 	}
 
-	@Override
+	
 	public SensorType getType() {
 		return type;
 	}
 	
-	@Override
+	
 	public boolean equals(Object other) {
 		if (other instanceof Sensor) {
 			return equals(((Sensor)other).getLocation());
@@ -188,7 +188,7 @@ public abstract class GenericSensor implements Sensor {
 		return false;
 	}
 
-	@Override
+	
 	public boolean equals(Location location) {
 		Block diode = getDiode();
 		if (diode != null) {
@@ -199,12 +199,12 @@ public abstract class GenericSensor implements Sensor {
 		return location.equals(getLocation());
 	}
 
-	@Override
+	
 	public void kill() {
 		
 	}
 	
-	@Override
+	
 	public SensorDataTable getDataTable() {
 		if (data == null) {
 			data = new SensorDataTable(sign, name, type, state, master);

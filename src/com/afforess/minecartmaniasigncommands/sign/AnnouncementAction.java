@@ -44,7 +44,6 @@ public class AnnouncementAction implements SignAction{
 		return SignManager.getSignAt(this.sign);
 	}
 
-	@Override
 	public boolean execute(MinecartManiaMinecart minecart) {
 		if (minecart.hasPlayerPassenger()) {
 			if (isParallel(minecart.getLocation(), minecart.getDirection()) || isUnder(minecart.getLocation())) {
@@ -86,12 +85,10 @@ public class AnnouncementAction implements SignAction{
 		return true;
 	}
 
-	@Override
 	public boolean async() {
 		return false;
 	}
 
-	@Override
 	public boolean valid(Sign sign) {
 		if (sign.getLine(0).toLowerCase().contains("announce")) {
 			sign.setLine(0, "[Announce]");
@@ -100,12 +97,10 @@ public class AnnouncementAction implements SignAction{
 		return false;
 	}
 
-	@Override
 	public String getName() {
 		return "announcementsign";
 	}
 
-	@Override
 	public String getFriendlyName() {
 		return "Announcement Sign";
 	}

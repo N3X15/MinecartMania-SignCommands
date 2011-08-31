@@ -33,7 +33,6 @@ public class AlterRangeAction implements SignAction{
 		}
 	}
 	
-	@Override
 	public boolean execute(MinecartManiaMinecart minecart) {
 		if (itemRange) {
 			if (minecart.isStorageMinecart()) {
@@ -51,22 +50,18 @@ public class AlterRangeAction implements SignAction{
 		return false;
 	}
 	
-	@Override
 	public boolean async() {
 		return true;
 	}
 	
-	@Override
 	public boolean valid(Sign sign) {
 		return this.range != -1;
 	}
 
-	@Override
 	public String getName() {
 		return "alterrangesign";
 	}
 
-	@Override
 	public String getFriendlyName() {
 		return "Alter Range Sign";
 	}

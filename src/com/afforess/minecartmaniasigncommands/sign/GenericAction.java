@@ -22,18 +22,18 @@ public class GenericAction implements SignAction{
 		this.value = value;
 	}
 
-	@Override
+	
 	public boolean execute(MinecartManiaMinecart minecart) {
 		minecart.setDataValue(key, value);
 		return true;
 	}
 
-	@Override
+	
 	public boolean async() {
 		return true;
 	}
 
-	@Override
+	
 	public boolean valid(Sign sign) {
 		for (String line : sign.getLines()) {
 			if (line.toLowerCase().contains(setting.toLowerCase())) {
@@ -44,12 +44,12 @@ public class GenericAction implements SignAction{
 		return false;
 	}
 
-	@Override
+	
 	public String getName() {
 		return StringUtils.removeWhitespace(setting.toLowerCase()) + "sign";
 	}
 
-	@Override
+	
 	public String getFriendlyName() {
 		return setting + " Sign";
 	}

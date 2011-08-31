@@ -10,17 +10,17 @@ public class PassPlayerAction implements SignAction{
 		
 	}
 
-	@Override
+	
 	public boolean execute(MinecartManiaMinecart minecart) {
 		return false;
 	}
 
-	@Override
+	
 	public boolean async() {
 		return false;
 	}
 
-	@Override
+	
 	public boolean valid(Sign sign) {
 		for (String line : sign.getLines()) {
 			if (line.toLowerCase().contains("pass player")) {
@@ -31,12 +31,12 @@ public class PassPlayerAction implements SignAction{
 		return false;
 	}
 
-	@Override
+	
 	public String getName() {
 		return "passplayersign";
 	}
 
-	@Override
+	
 	public String getFriendlyName() {
 		return "Pass Player Sign";
 	}

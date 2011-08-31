@@ -11,7 +11,7 @@
     <!-- Project information -->
     <groupId>com.afforess</groupId>
     <artifactId>minecartmaniasigncommands</artifactId>
-    <version>dev-SNAPSHOT</version>
+    <version>1.2.9-SNAPSHOT</version>
     <name>Minecart Mania Sign Commands</name>
     <url>http://afforess.com</url>
     <description>This plugin's name is deceiving. While it does handle the majority of sign commands, there are a few cases where addons opt to handle signs themselves. In any case, Sign Commands is vital for the operation of Autonomous farms, holding, ejection, collection range, and various other signs.</description>
@@ -31,9 +31,16 @@
             <id>bukkit-repo</id>
             <url>http://repo.bukkit.org/artifactory/repo</url>
         </repository>
+        <!-- 
         <repository>
             <id>craftfire-repo</id>
             <url>http://repo.craftfire.com/repo</url>
+        </repository>
+        -->
+        <!-- For BigBrother integration -->
+        <repository>
+            <id>nexisonline-repo</id>
+            <url>http://repo.nexisonline.net:8080/nexus/content/groups/public/</url>
         </repository>
     </repositories>
 
@@ -42,7 +49,7 @@
         <dependency>
             <groupId>com.afforess</groupId>
             <artifactId>minecartmaniacore</artifactId>
-            <version>dev-SNAPSHOT</version>
+            <version>1.2.9-SNAPSHOT</version>
         </dependency>
 
         <!-- Bukkit -->

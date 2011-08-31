@@ -12,7 +12,6 @@ public class SensorZombiePigman extends GenericSensor {
 		super(type, sign, name);
 	}
 
-	@Override
 	public void input(MinecartManiaMinecart minecart) {
 		if (minecart != null) {
 			setState(minecart.minecart.getPassenger() instanceof PigZombie);

@@ -24,28 +24,28 @@ public class SetMaxSpeedAction implements SignAction {
 		}
 	}
 
-	@Override
+	
 	public boolean execute(MinecartManiaMinecart minecart) {
 		minecart.minecart.setMaxSpeed(0.4D * percent / 100);
 		return true;
 	}
 
-	@Override
+	
 	public boolean async() {
 		return true;
 	}
 
-	@Override
+	
 	public boolean valid(Sign sign) {
 		return this.percent > 0;
 	}
 
-	@Override
+	
 	public String getName() {
 		return "maxspeedsign";
 	}
 
-	@Override
+	
 	public String getFriendlyName() {
 		return "Max Speed Sign";
 	}

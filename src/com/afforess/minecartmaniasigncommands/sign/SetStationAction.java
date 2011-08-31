@@ -27,7 +27,7 @@ public class SetStationAction implements SignAction{
 		}
 	}
 
-	@Override
+	
 	public boolean execute(MinecartManiaMinecart minecart) {
 		if (minecart.hasPlayerPassenger()) {
 			MinecartManiaWorld.getMinecartManiaPlayer(minecart.getPlayerPassenger()).setLastStation(station);
@@ -36,22 +36,22 @@ public class SetStationAction implements SignAction{
 		return false;
 	}
 
-	@Override
+	
 	public boolean async() {
 		return true;
 	}
 
-	@Override
+	
 	public boolean valid(Sign sign) {
 		return station != null;
 	}
 
-	@Override
+	
 	public String getName() {
 		return "setstationsign";
 	}
 
-	@Override
+	
 	public String getFriendlyName() {
 		return "Set Station Sign";
 	}
