@@ -30,7 +30,7 @@ public enum SignType {
 	AutoPlantOffSign(GenericAction.class, "Plant Off", "AutoPlant", null),
 	AutoCactusOffSign(GenericAction.class, "Cactus Off", "AutoCactus", null),
 	AutoReCactusOffSign(GenericAction.class, "ReCactus Off", "AutoReCactus", null),
-    SmartForestOffSign(GenericAction.class, "SForest Off", "SmartForest", null),
+    SmartForestOffSign(GenericAction.class, "No SForest", "SmartForest", null),
 	AlterRangeSign(AlterRangeAction.class),
 	SetMaximumSpeedSign(SetMaxSpeedAction.class),
 	EjectionSign(EjectionAction.class),
