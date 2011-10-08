@@ -25,6 +25,8 @@ public enum SignType {
     AutoMelonOffSign(GenericAction.class, "Melon Off", "AutoMelon",null),
     AutoPumpkinSign(GenericAction.class, "AutoPumpkin"),
     AutoPumpkinOffSign(GenericAction.class, "Pumpkin Off", "AutoPumpkin",null),
+    AutoStemsSign(GenericAction.class, "Stems Too"),
+    AutoStemsOffSign(GenericAction.class, "No Stems", "Stems Too",null),
 	AutoSeedOffSign(GenericAction.class, "Seed Off", "AutoSeed", null),
 	AutoTillOffSign(GenericAction.class, "Till Off", "AutoTill", null),
 	AutoHarvestOffSign(GenericAction.class, "Harvest Off", "AutoHarvest", null),
