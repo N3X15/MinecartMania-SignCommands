@@ -23,6 +23,8 @@ public enum SignType {
     SmartForestSign(GenericAction.class, "SmartForest"),
     AutoMelonSign(GenericAction.class, "AutoMelon"),
     AutoMelonOffSign(GenericAction.class, "Melon Off", "AutoMelon",null),
+    AutoFertilizeSign(GenericAction.class, "AutoFertilize"),
+    AutoFertilizeOffSign(GenericAction.class, "Fertilize Off", "AutoFertilize",null),
     AutoPumpkinSign(GenericAction.class, "AutoPumpkin"),
     AutoPumpkinOffSign(GenericAction.class, "Pumpkin Off", "AutoPumpkin",null),
     AutoStemsSign(GenericAction.class, "Stems Too"),
