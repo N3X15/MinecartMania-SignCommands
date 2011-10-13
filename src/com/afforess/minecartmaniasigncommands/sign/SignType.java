@@ -12,7 +12,7 @@ public enum SignType {
     LockCartSign(LockCartAction.class),
     UnlockCartSign(UnlockCartAction.class),
     AutoSeedSign(GenericAction.class, "AutoSeed"),
-    AutoTillign(GenericAction.class, "AutoTill"),
+    AutoTillSign(GenericAction.class, "AutoTill"),
     AutoHarvestSign(GenericAction.class, "AutoHarvest"),
     AutoTimberSign(GenericAction.class, "AutoTimber"),
     AutoForestSign(GenericAction.class, "AutoForest"),
