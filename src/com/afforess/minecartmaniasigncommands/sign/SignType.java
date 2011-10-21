@@ -28,10 +28,13 @@ public enum SignType {
     // -- DEFOLIATE --
     DefoliateSign(GenericAction.class, "Defoliate"),
     FoliageSign(GenericAction.class, "Defoliate Off", "Defoliate", null),
-    
+
     // -- AUTOFERTILIZE --
     AutoFertilizeSign(GenericAction.class, "AutoFertilize"),
     AutoFertilizeOffSign(GenericAction.class, "Fertilize Off", "AutoFertilize", null),
+    
+    // -- AUTOMINE --
+    AutoMineSign(GenericAction.class, "Mining Off", "AutoMine", null),
     
     // -- DEBUGGING -- 
     DebugSign(GenericAction.class, "MMDebug"),
