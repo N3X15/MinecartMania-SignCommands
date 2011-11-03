@@ -5,7 +5,7 @@ import com.afforess.minecartmaniacore.signs.Sign;
 import com.afforess.minecartmaniacore.signs.SignAction;
 import com.afforess.minecartmaniacore.utils.StringUtils;
 
-public class GenericAction implements SignAction{
+public class GenericAction implements SignAction {
 	protected String setting = null;
 	protected String key = null;
 	protected Object value = null;
