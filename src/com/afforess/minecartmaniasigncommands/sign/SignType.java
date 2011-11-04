@@ -20,29 +20,6 @@ public enum SignType {
     AutoPlantSign(GenericAction.class, "AutoPlant"),
     AutoCactusSign(GenericAction.class, "AutoCactus"),
     AutoReCactusSign(GenericAction.class, "AutoReCactus"),
-    SmartForestSign(GenericAction.class, "SmartForest"),
-    // -- AUTOMELON --
-    AutoMelonSign(GenericAction.class, "AutoMelon"),
-    AutoMelonOffSign(GenericAction.class, "Melon Off", "AutoMelon", null),
-    
-    // -- DEFOLIATE --
-    DefoliateSign(GenericAction.class, "Defoliate"),
-    FoliageSign(GenericAction.class, "Defoliate Off", "Defoliate", null),
-
-    // -- AUTOFERTILIZE --
-    AutoFertilizeSign(GenericAction.class, "AutoFertilize"),
-    AutoFertilizeOffSign(GenericAction.class, "Fertilize Off", "AutoFertilize", null),
-    
-    // -- AUTOMINE --
-    AutoMineSign(GenericAction.class, "Mining Off", "AutoMine", null),
-    
-    // -- DEBUGGING -- 
-    DebugSign(GenericAction.class, "MMDebug"),
-    DebugOffSign(GenericAction.class, "Debug Off", "MMDebug", null),
-    AutoPumpkinSign(GenericAction.class, "AutoPumpkin"),
-    AutoPumpkinOffSign(GenericAction.class, "Pumpkin Off", "AutoPumpkin", null),
-    AutoStemsSign(GenericAction.class, "Stems Too"),
-    AutoStemsOffSign(GenericAction.class, "No Stems", "Stems Too", null),
     AutoSeedOffSign(GenericAction.class, "Seed Off", "AutoSeed", null),
     AutoTillOffSign(GenericAction.class, "Till Off", "AutoTill", null),
     AutoHarvestOffSign(GenericAction.class, "Harvest Off", "AutoHarvest", null),
@@ -52,7 +29,6 @@ public enum SignType {
     AutoPlantOffSign(GenericAction.class, "Plant Off", "AutoPlant", null),
     AutoCactusOffSign(GenericAction.class, "Cactus Off", "AutoCactus", null),
     AutoReCactusOffSign(GenericAction.class, "ReCactus Off", "AutoReCactus", null),
-    SmartForestOffSign(GenericAction.class, "No SForest", "SmartForest", null),
     AlterRangeSign(AlterRangeAction.class),
     SetMaximumSpeedSign(SetMaxSpeedAction.class),
     EjectionSign(EjectionAction.class),
