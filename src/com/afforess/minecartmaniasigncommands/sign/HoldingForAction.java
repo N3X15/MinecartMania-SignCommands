@@ -42,7 +42,7 @@ public class HoldingForAction implements SignAction{
 		if (minecart.getDataValue("HoldForDelay") != null) {
 			return false;
 		}
-		if (ControlBlockList.isCatcherBlock(minecart.getItemBeneath())) {
+		if (ControlBlockList.isCatcherBlock(minecart.getSpecificMaterialBeneath())) {
 			HoldSignData data = null;
 			/*try {
 				data = MinecartManiaSignCommands.instance.getDatabase().find(HoldSignData.class).where().idEq(minecart.minecart.getEntityId()).findUnique();

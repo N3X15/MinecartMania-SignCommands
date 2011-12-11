@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 
 import com.afforess.minecartmaniacore.config.LocaleParser;
 import com.afforess.minecartmaniacore.utils.ItemUtils;
+import com.afforess.minecartmaniacore.utils.DirectionUtils.CompassDirection;
 
 public abstract class SensorConstructor {
 	
@@ -57,8 +58,8 @@ public abstract class SensorConstructor {
 				case DETECT_PLAYER: sensor = new SensorPlayer(sensorType, sign, name); break;
 				case DETECT_STORAGE: sensor = new SensorStorage(sensorType, sign, name); break;
 				case DETECT_POWERED: sensor = new SensorPowered(sensorType, sign, name); break;
-				case DETECT_ITEM_AND: sensor = new SensorItem(sensorType, sign, name, Arrays.asList(ItemUtils.getItemStringToMaterial(sign.getLine(2)))); break;
-				case DETECT_ITEM_OR: sensor = new SensorItemOr(sensorType, sign, name, Arrays.asList(ItemUtils.getItemStringToMaterial(sign.getLine(2)))); break;
+				case DETECT_ITEM_AND: sensor = new SensorItem(sensorType, sign, name, Arrays.asList(ItemUtils.getItemStringToMatchers(sign.getLine(2),CompassDirection.NO_DIRECTION))); break;
+				case DETECT_ITEM_OR: sensor = new SensorItemOr(sensorType, sign, name, Arrays.asList(ItemUtils.getItemStringToMatchers(sign.getLine(2),CompassDirection.NO_DIRECTION))); break;
 				case DETECT_PLYR_NAME: sensor = new SensorPlayerName(sensorType, sign, name, sign.getLine(2).trim()); break;
 				case DETECT_ZOMBIE: sensor = new SensorZombie(sensorType, sign, name); break;
 				case DETECT_SKELETON: sensor = new SensorSkeleton(sensorType, sign, name); break;

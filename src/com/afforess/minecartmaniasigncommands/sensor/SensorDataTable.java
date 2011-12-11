@@ -11,6 +11,7 @@ import org.bukkit.Location;
 import org.bukkit.block.Sign;
 
 import com.afforess.minecartmaniacore.utils.ItemUtils;
+import com.afforess.minecartmaniacore.utils.DirectionUtils.CompassDirection;
 import com.avaje.ebean.validation.NotNull;
 @Entity()
 @Table(name = "sensors")
@@ -182,8 +183,8 @@ public class SensorDataTable {
 			case DETECT_PLAYER: sensor = new SensorPlayer(type, sign, name); break;
 			case DETECT_STORAGE: sensor = new SensorStorage(type, sign, name); break;
 			case DETECT_POWERED: sensor = new SensorPowered(type, sign, name); break;
-			case DETECT_ITEM_AND: sensor = new SensorItem(type, sign, name, Arrays.asList(ItemUtils.getItemStringToMaterial(sign.getLine(2)))); break;
-			case DETECT_ITEM_OR: sensor = new SensorItemOr(type, sign, name, Arrays.asList(ItemUtils.getItemStringToMaterial(sign.getLine(2)))); break;
+            case DETECT_ITEM_AND: sensor = new SensorItem(type, sign, name, Arrays.asList(ItemUtils.getItemStringToMatchers(sign.getLine(2),CompassDirection.NO_DIRECTION))); break;
+            case DETECT_ITEM_OR: sensor = new SensorItemOr(type, sign, name, Arrays.asList(ItemUtils.getItemStringToMatchers(sign.getLine(2),CompassDirection.NO_DIRECTION))); break;
 			case DETECT_PLYR_NAME: sensor = new SensorPlayerName(type, sign, name, sign.getLine(2).trim()); break;
 			case DETECT_ZOMBIE: sensor = new SensorZombie(type, sign, name); break;
 			case DETECT_SKELETON: sensor = new SensorSkeleton(type, sign, name); break;
