@@ -30,7 +30,7 @@ public class SensorItemOr extends GenericSensor {
         if (minecart != null) {
             for (ItemMatcher matcher : detect) {
                 int n = 0;
-                int amountNeeded = matcher.getAmount();
+                int amountNeeded = matcher.getAmount(0);
                 if (minecart.isStorageMinecart()) {
                     MinecartManiaStorageCart cart = ((MinecartManiaStorageCart) minecart);
                     
