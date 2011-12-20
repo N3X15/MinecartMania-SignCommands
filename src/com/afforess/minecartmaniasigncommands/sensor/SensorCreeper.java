@@ -5,19 +5,17 @@ import org.bukkit.entity.Creeper;
 
 import com.afforess.minecartmaniacore.minecart.MinecartManiaMinecart;
 
-public class SensorCreeper extends GenericSensor{
-	
-	private static final long serialVersionUID = -45434585831195L;
-	public SensorCreeper(SensorType type, Sign sign, String name) {
-		super(type, sign, name);
-	}
-
-	public void input(MinecartManiaMinecart minecart) {
-		if (minecart != null) {
-			setState(minecart.minecart.getPassenger() instanceof Creeper);
-		}
-		else {
-			setState(false);
-		}
-	}
+public class SensorCreeper extends GenericSensor {
+    
+    public SensorCreeper(final SensorType type, final Sign sign, final String name) {
+        super(type, sign, name);
+    }
+    
+    public void input(final MinecartManiaMinecart minecart) {
+        if (minecart != null) {
+            setState(minecart.minecart.getPassenger() instanceof Creeper);
+        } else {
+            setState(false);
+        }
+    }
 }

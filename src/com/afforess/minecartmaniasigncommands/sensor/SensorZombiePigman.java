@@ -6,21 +6,18 @@ import org.bukkit.entity.PigZombie;
 import com.afforess.minecartmaniacore.minecart.MinecartManiaMinecart;
 
 public class SensorZombiePigman extends GenericSensor {
-
-	private static final long serialVersionUID = 156874321698764132L;
-	public SensorZombiePigman(SensorType type, Sign sign, String name){
-		super(type, sign, name);
-	}
-
-	public void input(MinecartManiaMinecart minecart) {
-		if (minecart != null) {
-			setState(minecart.minecart.getPassenger() instanceof PigZombie);
-		}
-		else {
-			setState(false);
-		}
-		
-	}
-	
-	
+    
+    public SensorZombiePigman(final SensorType type, final Sign sign, final String name) {
+        super(type, sign, name);
+    }
+    
+    public void input(final MinecartManiaMinecart minecart) {
+        if (minecart != null) {
+            setState(minecart.minecart.getPassenger() instanceof PigZombie);
+        } else {
+            setState(false);
+        }
+        
+    }
+    
 }

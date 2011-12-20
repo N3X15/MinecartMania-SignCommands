@@ -5,19 +5,17 @@ import org.bukkit.entity.Skeleton;
 
 import com.afforess.minecartmaniacore.minecart.MinecartManiaMinecart;
 
-public class SensorSkeleton extends GenericSensor{
-	
-	private static final long serialVersionUID = 3456941565L;
-	public SensorSkeleton(SensorType type, Sign sign, String name) {
-		super(type, sign, name);
-	}
-
-	public void input(MinecartManiaMinecart minecart) {
-		if (minecart != null) {
-			setState(minecart.minecart.getPassenger() instanceof Skeleton);
-		}
-		else {
-			setState(false);
-		}
-	}
+public class SensorSkeleton extends GenericSensor {
+    
+    public SensorSkeleton(final SensorType type, final Sign sign, final String name) {
+        super(type, sign, name);
+    }
+    
+    public void input(final MinecartManiaMinecart minecart) {
+        if (minecart != null) {
+            setState(minecart.minecart.getPassenger() instanceof Skeleton);
+        } else {
+            setState(false);
+        }
+    }
 }

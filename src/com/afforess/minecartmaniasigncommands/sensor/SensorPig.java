@@ -5,19 +5,17 @@ import org.bukkit.entity.Pig;
 
 import com.afforess.minecartmaniacore.minecart.MinecartManiaMinecart;
 
-public class SensorPig extends GenericSensor{
-	
-	private static final long serialVersionUID = -43458892923565L;
-	public SensorPig(SensorType type, Sign sign, String name) {
-		super(type, sign, name);
-	}
-
-	public void input(MinecartManiaMinecart minecart) {
-		if (minecart != null) {
-			setState(minecart.minecart.getPassenger() instanceof Pig);
-		}
-		else {
-			setState(false);
-		}
-	}
+public class SensorPig extends GenericSensor {
+    
+    public SensorPig(final SensorType type, final Sign sign, final String name) {
+        super(type, sign, name);
+    }
+    
+    public void input(final MinecartManiaMinecart minecart) {
+        if (minecart != null) {
+            setState(minecart.minecart.getPassenger() instanceof Pig);
+        } else {
+            setState(false);
+        }
+    }
 }

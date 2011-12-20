@@ -24,38 +24,38 @@ public enum SensorType {
     DETECT_ITEM_OR("0017", "Detect Item (Or)"),
     DETECT_ZOMBIEPIGMAN("0018", "Detect ZombiePigman"),
     DETECT_STATION("0019", "Detect Station"),
-    DETECT_ITEMHELD("0020", "Detect Item Held")
-    ;
+    DETECT_ITEMHELD("0020", "Detect Item Held");
     private String type;
     private String desc;
     private static Map<String, SensorType> map;
-
-    private SensorType(String name, String description){
-        this.type = name;
-        this.desc = description;
-        add( name, this );
+    
+    private SensorType(final String name, final String description) {
+        type = name;
+        desc = description;
+        add(name, this);
     }
-
-    private static void add( String type, SensorType name ) {
+    
+    private static void add(final String type, final SensorType name) {
         if (map == null) {
             map = new HashMap<String, SensorType>();
         }
-
+        
         map.put(type, name);
     }
-
+    
     public String getType() {
         return type;
     }
     
     public String getDescription() {
-    	return desc;
+        return desc;
     }
     
+    @Override
     public String toString() {
-    	return type;
+        return type;
     }
-
+    
     public static SensorType fromName(final String type) {
         return map.get(type);
     }

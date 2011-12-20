@@ -5,19 +5,17 @@ import org.bukkit.entity.Cow;
 
 import com.afforess.minecartmaniacore.minecart.MinecartManiaMinecart;
 
-public class SensorCow extends GenericSensor{
-	
-	private static final long serialVersionUID = 7941215573351195L;
-	public SensorCow(SensorType type, Sign sign, String name) {
-		super(type, sign, name);
-	}
-
-	public void input(MinecartManiaMinecart minecart) {
-		if (minecart != null) {
-			setState(minecart.minecart.getPassenger() instanceof Cow);
-		}
-		else {
-			setState(false);
-		}
-	}
+public class SensorCow extends GenericSensor {
+    
+    public SensorCow(final SensorType type, final Sign sign, final String name) {
+        super(type, sign, name);
+    }
+    
+    public void input(final MinecartManiaMinecart minecart) {
+        if (minecart != null) {
+            setState(minecart.minecart.getPassenger() instanceof Cow);
+        } else {
+            setState(false);
+        }
+    }
 }

@@ -38,24 +38,23 @@ public enum SignType {
     PassPlayerSign(PassPlayerAction.class),
     EjectAtSign(EjectAtAction.class),
     EjectionConditionAction(EjectionConditionAction.class),
-
+    
     ;
     SignType(final Class<? extends SignAction> action) {
         this.action = action;
-        this.setting = null;
-        this.key = null;
-        this.value = null;
+        setting = null;
+        key = null;
+        value = null;
     }
     
-    SignType(final Class<? extends SignAction> action, String setting) {
+    SignType(final Class<? extends SignAction> action, final String setting) {
         this.action = action;
         this.setting = setting;
-        this.key = null;
-        this.value = null;
+        key = null;
+        value = null;
     }
     
-    SignType(final Class<? extends SignAction> action, String setting,
-            String key, Object value) {
+    SignType(final Class<? extends SignAction> action, final String setting, final String key, final Object value) {
         this.action = action;
         this.setting = setting;
         this.key = key;
@@ -71,25 +70,25 @@ public enum SignType {
         return action;
     }
     
-    public SignAction getSignAction(Sign sign) {
+    public SignAction getSignAction(final Sign sign) {
         try {
             
             Constructor<? extends SignAction> constructor;
             SignAction action;
-            if (this.setting == null) {
+            if (setting == null) {
                 constructor = this.action.getConstructor(Sign.class);
                 action = constructor.newInstance(sign);
-            } else if (this.key == null) {
+            } else if (key == null) {
                 constructor = this.action.getConstructor(String.class);
-                action = constructor.newInstance(this.setting);
+                action = constructor.newInstance(setting);
             } else {
                 constructor = this.action.getConstructor(String.class, String.class, Object.class);
-                action = constructor.newInstance(this.setting, this.key, this.value);
+                action = constructor.newInstance(setting, key, value);
             }
             return action;
-        } catch (Exception e) {
+        } catch (final Exception e) {
             MinecartManiaLogger.getInstance().severe("Failed to read sign!");
-            MinecartManiaLogger.getInstance().severe("Sign was :" + this.action);
+            MinecartManiaLogger.getInstance().severe("Sign was :" + action);
             e.printStackTrace();
         }
         return null;

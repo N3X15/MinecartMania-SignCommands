@@ -6,24 +6,24 @@ import com.afforess.minecartmaniacore.minecart.MinecartManiaMinecart;
 import com.afforess.minecartmaniacore.world.MinecartManiaWorld;
 
 public class SensorStation extends GenericSensor {
-	
-	private Sign sign;
-	private static final long serialVersionUID = 231681352165213335L;
-	public SensorStation(SensorType type, Sign sign, String name){
-		super(type, sign, name);
-		this.sign = sign;
-	}
-	public void input(MinecartManiaMinecart minecart) {
-		
-		if (minecart != null) {
-			if (minecart.hasPlayerPassenger()){
-				setState(sign.getLine(2).equals(MinecartManiaWorld.getMinecartManiaPlayer(minecart.getPlayerPassenger()).getLastStation()));
-			}
-		}
-		else {
-			setState(false);
-		}
-		
-	}
-
+    
+    private final Sign sign;
+    
+    public SensorStation(final SensorType type, final Sign sign, final String name) {
+        super(type, sign, name);
+        this.sign = sign;
+    }
+    
+    public void input(final MinecartManiaMinecart minecart) {
+        
+        if (minecart != null) {
+            if (minecart.hasPlayerPassenger()) {
+                setState(sign.getLine(2).equals(MinecartManiaWorld.getMinecartManiaPlayer(minecart.getPlayerPassenger()).getLastStation()));
+            }
+        } else {
+            setState(false);
+        }
+        
+    }
+    
 }
