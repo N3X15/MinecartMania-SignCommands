@@ -10,8 +10,6 @@ import javax.persistence.PersistenceException;
 
 import org.bukkit.Server;
 import org.bukkit.block.Block;
-import org.bukkit.event.Event;
-import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -28,8 +26,6 @@ public class MinecartManiaSignCommands extends JavaPlugin {
     public static Server server;
     public static PluginDescriptionFile description;
     public static MinecartActionListener listener = new MinecartActionListener();
-    public static MinecartVehicleListener vehicleListener = new MinecartVehicleListener();
-    public static SignCommandsBlockListener blockListener = new SignCommandsBlockListener();
     public static MinecartManiaSignCommands instance;
     public static final int DATABASE_VERSION = 2;
     
@@ -42,11 +38,12 @@ public class MinecartManiaSignCommands extends JavaPlugin {
         description = getDescription();
         instance = this;
         MinecartManiaConfigurationParser.read(description.getName() + "Configuration.xml", MinecartManiaCore.getDataDirectoryRelativePath(), new SignCommandsSettingParser());
-        getServer().getPluginManager().registerEvent(Event.Type.CUSTOM_EVENT, listener, Priority.Low, this);
-        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_ENTER, vehicleListener, Priority.Monitor, this);
-        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_EXIT, vehicleListener, Priority.Monitor, this);
-        getServer().getPluginManager().registerEvent(Event.Type.BLOCK_DAMAGE, blockListener, Priority.Normal, this);
-        getServer().getPluginManager().registerEvent(Event.Type.BLOCK_PHYSICS, blockListener, Priority.Normal, this);
+        getServer().getPluginManager().registerEvents(listener, this);
+        //        getServer().getPluginManager().registerEvent(Event.Type.CUSTOM_EVENT, listener, Priority.Low, this);
+        //        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_ENTER, vehicleListener, Priority.Monitor, this);
+        //        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_EXIT, vehicleListener, Priority.Monitor, this);
+        //        getServer().getPluginManager().registerEvent(Event.Type.BLOCK_DAMAGE, blockListener, Priority.Normal, this);
+        //        getServer().getPluginManager().registerEvent(Event.Type.BLOCK_PHYSICS, blockListener, Priority.Normal, this);
         
         //sensor setup
         final File ebeans = new File(new File(getDataFolder().getParent()).getParent(), "ebean.properties");
