@@ -59,13 +59,27 @@ public class ElevatorAction implements SignAction {
                             nextFloor.setZ(nextFloor.getZ() + td.toVector(1).getBlockZ());
                             final double speed = minecart.getPreviousMotion().length();
                             if (MinecartUtils.isTrack(nextFloor)) {
-                                minecart.setMotion(td, speed);
+                                minecart.setMotion(findOppositeDir(td), speed);
                                 return nextFloor;
                             }
                         }
                     }
                 }
             }
+        }
+        return null;
+    }
+    
+    private CompassDirection findOppositeDir(CompassDirection td) {
+        switch (td) {
+            case NORTH:
+                return CompassDirection.SOUTH;
+            case EAST:
+                return CompassDirection.WEST;
+            case SOUTH:
+                return CompassDirection.NORTH;
+            case WEST:
+                return CompassDirection.EAST;
         }
         return null;
     }
