@@ -2,6 +2,7 @@ package com.afforess.minecartmaniasigncommands.sign;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.util.Vector;
 
 import com.afforess.minecartmaniacore.minecart.MinecartManiaMinecart;
 import com.afforess.minecartmaniacore.signs.Sign;
@@ -13,6 +14,7 @@ import com.afforess.minecartmaniacore.utils.MinecartUtils;
 public class ElevatorAction implements SignAction {
     
     protected Location sign;
+    private static final CompassDirection[] validDirections = new CompassDirection[] { CompassDirection.NORTH, CompassDirection.EAST, CompassDirection.SOUTH, CompassDirection.WEST };
     
     public ElevatorAction(final Sign sign) {
         this.sign = sign.getLocation();
@@ -22,18 +24,19 @@ public class ElevatorAction implements SignAction {
         return SignManager.getSignAt(sign);
     }
     
+    private boolean validDirection(CompassDirection dir) {
+        for (CompassDirection td : validDirections) {
+            if (td.equals(dir))
+                return true;
+        }
+        return false;
+    }
+    
     protected Location calculateElevatorStop(final MinecartManiaMinecart minecart) {
         //get the offset of the track just after the sign in the current facing direction
-        int facingX = 0;
-        int facingZ = 0;
-        if (minecart.getDirection() == CompassDirection.NORTH) {
-            facingX = -1;
-        } else if (minecart.getDirection() == CompassDirection.EAST) {
-            facingZ = -1;
-        } else if (minecart.getDirection() == CompassDirection.SOUTH) {
-            facingX = 1;
-        } else if (minecart.getDirection() == CompassDirection.WEST) {
-            facingZ = 1;
+        Vector facing = new Vector(0, 0, 0);
+        if (validDirection(minecart.getDirectionOfMotion())) {
+            facing = minecart.getDirectionOfMotion().toVector(1);
         }
         
         final Location search = sign.clone();
@@ -45,35 +48,20 @@ public class ElevatorAction implements SignAction {
                 if (temp != null) {
                     if (temp.hasSignAction(ElevatorAction.class)) {
                         nextFloor = search.clone();
-                        nextFloor.setX(nextFloor.getX() + facingX);
-                        nextFloor.setZ(nextFloor.getZ() + facingZ);
+                        nextFloor.setX(nextFloor.getX() + facing.getBlockX());
+                        nextFloor.setZ(nextFloor.getZ() + facing.getBlockZ());
                         //give priority to the minecart current facing direction
                         if (MinecartUtils.isTrack(nextFloor))
                             return nextFloor;
-                        nextFloor.setX(nextFloor.getX() - facingX - 1);
-                        nextFloor.setZ(nextFloor.getZ() - facingZ);
-                        final double speed = minecart.getPreviousMotion().length();
-                        if (MinecartUtils.isTrack(nextFloor)) {
-                            minecart.setMotion(CompassDirection.NORTH, speed);
-                            return nextFloor;
-                        }
-                        nextFloor.setX(nextFloor.getX() + 1);
-                        nextFloor.setZ(nextFloor.getZ() - 1);
-                        if (MinecartUtils.isTrack(nextFloor)) {
-                            minecart.setMotion(CompassDirection.EAST, speed);
-                            return nextFloor;
-                        }
-                        nextFloor.setX(nextFloor.getX() + 1);
-                        nextFloor.setZ(nextFloor.getZ() + 1);
-                        if (MinecartUtils.isTrack(nextFloor)) {
-                            minecart.setMotion(CompassDirection.SOUTH, speed);
-                            return nextFloor;
-                        }
-                        nextFloor.setX(nextFloor.getX() - 1);
-                        nextFloor.setZ(nextFloor.getZ() + 1);
-                        if (MinecartUtils.isTrack(nextFloor)) {
-                            minecart.setMotion(CompassDirection.WEST, speed);
-                            return nextFloor;
+                        
+                        for (CompassDirection td : validDirections) {
+                            nextFloor.setX(nextFloor.getX() + td.toVector(1).getBlockX());
+                            nextFloor.setZ(nextFloor.getZ() + td.toVector(1).getBlockZ());
+                            final double speed = minecart.getPreviousMotion().length();
+                            if (MinecartUtils.isTrack(nextFloor)) {
+                                minecart.setMotion(td, speed);
+                                return nextFloor;
+                            }
                         }
                     }
                 }
