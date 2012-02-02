@@ -14,7 +14,6 @@ import com.afforess.minecartmaniacore.utils.MinecartUtils;
 public class ElevatorAction implements SignAction {
     
     protected Location sign;
-    private static final CompassDirection[] validDirections = new CompassDirection[] { CompassDirection.NORTH, CompassDirection.EAST, CompassDirection.SOUTH, CompassDirection.WEST };
     
     public ElevatorAction(final Sign sign) {
         this.sign = sign.getLocation();
@@ -24,18 +23,10 @@ public class ElevatorAction implements SignAction {
         return SignManager.getSignAt(sign);
     }
     
-    private boolean validDirection(CompassDirection dir) {
-        for (CompassDirection td : validDirections) {
-            if (td.equals(dir))
-                return true;
-        }
-        return false;
-    }
-    
     protected Location calculateElevatorStop(final MinecartManiaMinecart minecart) {
         //get the offset of the track just after the sign in the current facing direction
         Vector facing = new Vector(0, 0, 0);
-        if (validDirection(minecart.getDirectionOfMotion())) {
+        if (MinecartUtils.validDirection(minecart.getDirectionOfMotion())) {
             facing = minecart.getDirectionOfMotion().toVector(1);
         }
         
@@ -54,7 +45,7 @@ public class ElevatorAction implements SignAction {
                         if (MinecartUtils.isTrack(nextFloor))
                             return nextFloor;
                         
-                        for (CompassDirection td : validDirections) {
+                        for (CompassDirection td : MinecartUtils.getValiddirections()) {
                             nextFloor.setX(nextFloor.getX() + td.toVector(1).getBlockX());
                             nextFloor.setZ(nextFloor.getZ() + td.toVector(1).getBlockZ());
                             final double speed = minecart.getPreviousMotion().length();
