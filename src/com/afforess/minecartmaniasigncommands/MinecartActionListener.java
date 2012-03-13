@@ -12,6 +12,7 @@ import org.bukkit.block.Sign;
 import org.bukkit.entity.Minecart;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.vehicle.VehicleEnterEvent;
@@ -22,7 +23,6 @@ import com.afforess.minecartmaniacore.event.MinecartActionEvent;
 import com.afforess.minecartmaniacore.event.MinecartCaughtEvent;
 import com.afforess.minecartmaniacore.event.MinecartClickedEvent;
 import com.afforess.minecartmaniacore.event.MinecartLaunchedEvent;
-import com.afforess.minecartmaniacore.event.MinecartManiaListener;
 import com.afforess.minecartmaniacore.event.MinecartManiaMinecartCreatedEvent;
 import com.afforess.minecartmaniacore.event.MinecartManiaMinecartDestroyedEvent;
 import com.afforess.minecartmaniacore.event.MinecartManiaSignFoundEvent;
@@ -45,7 +45,7 @@ import com.afforess.minecartmaniasigncommands.sign.EjectionConditionAction;
 import com.afforess.minecartmaniasigncommands.sign.HoldSignData;
 import com.afforess.minecartmaniasigncommands.sign.SignType;
 
-public class MinecartActionListener extends MinecartManiaListener {
+public class MinecartActionListener implements Listener {
     
     @EventHandler(priority = EventPriority.NORMAL)
     public void onVehicleEnter(final VehicleEnterEvent event) {
@@ -74,7 +74,7 @@ public class MinecartActionListener extends MinecartManiaListener {
     }
     
     //Test 1
-    @Override
+    
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMinecartActionEvent(final MinecartActionEvent event) {
         final MinecartManiaMinecart minecart = event.getMinecart();
@@ -86,7 +86,6 @@ public class MinecartActionListener extends MinecartManiaListener {
         
     }
     
-    @Override
     @EventHandler(priority = EventPriority.NORMAL)
     public void onMinecartPassengerEjectEvent(final MinecartPassengerEjectEvent event) {
         final MinecartManiaMinecart minecart = event.getMinecart();
@@ -117,7 +116,6 @@ public class MinecartActionListener extends MinecartManiaListener {
         }
     }
     
-    @Override
     @EventHandler(priority = EventPriority.NORMAL)
     public void onMinecartLaunchedEvent(final MinecartLaunchedEvent event) {
         if (event.isActionTaken())
@@ -128,7 +126,6 @@ public class MinecartActionListener extends MinecartManiaListener {
         }
     }
     
-    @Override
     @EventHandler(priority = EventPriority.NORMAL)
     public void onMinecartCaughtEvent(final MinecartCaughtEvent event) {
         if (event.isActionTaken())
@@ -139,13 +136,11 @@ public class MinecartActionListener extends MinecartManiaListener {
         }
     }
     
-    @Override
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMinecartManiaMinecartCreatedEvent(final MinecartManiaMinecartCreatedEvent event) {
         SignCommands.updateSensors(event.getMinecart());
     }
     
-    @Override
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMinecartTimeEvent(final MinecartTimeEvent event) {
         final MinecartManiaMinecart minecart = event.getMinecart();
@@ -183,13 +178,11 @@ public class MinecartActionListener extends MinecartManiaListener {
         }
     }
     
-    @Override
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMinecartManiaMinecartDestroyedEvent(final MinecartManiaMinecartDestroyedEvent event) {
         SignCommands.updateSensors(event.getMinecart(), null);
     }
     
-    @Override
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMinecartMotionStopEvent(final MinecartMotionStopEvent event) {
         final MinecartManiaMinecart minecart = event.getMinecart();
@@ -201,7 +194,6 @@ public class MinecartActionListener extends MinecartManiaListener {
         }
     }
     
-    @Override
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMinecartMotionStartEvent(final MinecartMotionStartEvent event) {
         final MinecartManiaMinecart minecart = event.getMinecart();
@@ -212,7 +204,6 @@ public class MinecartActionListener extends MinecartManiaListener {
         }
     }
     
-    @Override
     @EventHandler(priority = EventPriority.NORMAL)
     public void onMinecartClickedEvent(final MinecartClickedEvent event) {
         if (event.isActionTaken())
@@ -226,7 +217,6 @@ public class MinecartActionListener extends MinecartManiaListener {
         }
     }
     
-    @Override
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMinecartManiaSignFoundEvent(final MinecartManiaSignFoundEvent event) {
         final com.afforess.minecartmaniacore.signs.Sign sign = event.getSign();

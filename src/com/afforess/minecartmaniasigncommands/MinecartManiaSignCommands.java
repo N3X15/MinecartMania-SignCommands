@@ -29,10 +29,12 @@ public class MinecartManiaSignCommands extends JavaPlugin {
     public static MinecartManiaSignCommands instance;
     public static final int DATABASE_VERSION = 2;
     
+    @Override
     public void onDisable() {
         
     }
     
+    @Override
     public void onEnable() {
         server = getServer();
         description = getDescription();

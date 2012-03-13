@@ -2,7 +2,6 @@ package com.afforess.minecartmaniasigncommands.sign;
 
 import org.bukkit.Location;
 
-import com.afforess.minecartmaniacore.MinecartManiaCore;
 import com.afforess.minecartmaniacore.minecart.MinecartManiaMinecart;
 import com.afforess.minecartmaniacore.signs.Sign;
 import com.afforess.minecartmaniacore.signs.SignAction;
@@ -62,13 +61,11 @@ public class AnnouncementAction implements SignAction {
         
         if ((exempt != CompassDirection.EAST) && (exempt != CompassDirection.WEST)) {
             if ((sign.getBlockX() != location.getBlockX()) && (sign.getBlockZ() == location.getBlockZ()))
-                return ((sign.getBlockX() - 1) == location.getBlockX()) || ((sign.getBlockX() + 1) == location.getBlockX()
-                	 ||	(sign.getBlockX() - 2) == location.getBlockX()) || ((sign.getBlockX() + 2) == location.getBlockX());
+                return ((sign.getBlockX() - 1) == location.getBlockX()) || (((sign.getBlockX() + 1) == location.getBlockX()) || ((sign.getBlockX() - 2) == location.getBlockX())) || ((sign.getBlockX() + 2) == location.getBlockX());
         }
         if ((exempt != CompassDirection.NORTH) && (exempt != CompassDirection.SOUTH)) {
             if ((sign.getBlockX() == location.getBlockX()) && (sign.getBlockZ() != location.getBlockZ()))
-                return ((sign.getBlockZ() - 1) == location.getBlockZ()) || ((sign.getBlockZ() + 1) == location.getBlockZ()
-                     || (sign.getBlockZ() - 2) == location.getBlockZ()) || ((sign.getBlockZ() + 2) == location.getBlockZ());
+                return ((sign.getBlockZ() - 1) == location.getBlockZ()) || (((sign.getBlockZ() + 1) == location.getBlockZ()) || ((sign.getBlockZ() - 2) == location.getBlockZ())) || ((sign.getBlockZ() + 2) == location.getBlockZ());
         }
         return false;
     }
